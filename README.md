@@ -1,2 +1,4 @@
 # AtCoderTimer
-AtCoderTimer is a web application that can display the remaining time during an Atcoder contest.
+AtCoderのコンテスト中、右下に表示されるタイマーをスマホなどで表示することができるwebアプリケーションです。
+
+[AtCoderTimer](https://jmjmri.github.io/AtCoderTimer/)
