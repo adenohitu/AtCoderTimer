@@ -1,5 +1,5 @@
 var urlParam = location.search.substring(1);
-url = '/api/contest.json'
+url = 'api/contest.json'
 console.log(url)
 new Vue({
     el: '#app',
@@ -29,7 +29,7 @@ new Vue({
                     before.time_end = moment(before.time_end).format("HH:mm:ss");
                 });
                 befores.find(before => {
-                    before.name_short = "/contest/?" + before.name_short
+                    before.name_short = "contest/?" + before.name_short
                 });
                 this.info = befores
             })

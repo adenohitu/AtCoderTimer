@@ -1,5 +1,5 @@
 var urlParam = location.search.substring(1);
-url = '/api/contest.json'
+url = 'api/contest.json'
 console.log(url)
 const app = new Vue({
     el: '#app',
