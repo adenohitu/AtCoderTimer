@@ -1,0 +1,15 @@
+html,
+body {
+    height: 100%;
+    background-color: #343a40;
+}
+
+h1.MyClass01 {
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: bold;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
