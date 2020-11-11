@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import datetime
 import json
-json_open = open('view/api/contest.json', 'r')
+json_open = open('docs/api/contest.json', 'r')
 
 json_load = json.load(json_open)
 dt_now = datetime.datetime.now()
@@ -41,6 +41,6 @@ for i in range(1, len(upcoming)):
 json_load = sorted(json_load, key=lambda x:x['time_start'])
 print(json.dumps(json_load))
 
-fd = open('view/api/contest.json', mode='w')
+fd = open('docs/api/contest.json', mode='w')
 json.dump(json_load, fd)
 fd.close()
