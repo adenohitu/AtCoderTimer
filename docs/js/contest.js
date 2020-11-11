@@ -22,6 +22,7 @@ const app = new Vue({
         request.onreadystatechange = function() {
             if (this.readyState === 4) {
                 serverStart = new Date(request.getResponseHeader('Date') || Date.now()).getTime();
+                serverStart -= performance.now();
             }
         }
         info = null
