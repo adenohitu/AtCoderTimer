@@ -1,5 +1,5 @@
 var urlParam = location.search.substring(1);
-url = '../api/contest.json'
+url = '../api/contest.json?timestamp=' + new Date().getTime()
 console.log(url)
 const app = new Vue({
     el: '#app',
@@ -15,23 +15,16 @@ const app = new Vue({
     },
     mounted: function() {
         let timerID = setInterval(this.updateTime, 60);
-        //レスポンスヘッダーよりサーバー時間を取得
-        var request = new XMLHttpRequest();
-        request.open('HEAD', window.location.href, true);
-        request.send();
-        request.onreadystatechange = function() {
-            if (this.readyState === 4) {
-                serverStart = new Date(request.getResponseHeader('Date') || Date.now()).getTime();
-                serverStart -= performance.now();
-            }
-        }
         info = null
         axios
             .get(url)
             .then(response => {
+                //レスポンスヘッダーよりサーバー時間を取得
+                servertime = new Date(response.headers.date)
+                diff = moment(servertime) - moment()
+                console.log(diff);
                 info = response
                 info = info.data.find((v) => v.name_short === urlParam);
-                console.log(info);
                 this.contest_name = info.name_long
                 this.contest_url = 'https://atcoder.jp/contests/' + info.name_short
                 this.limit = info.time_limit.slice(0, -2) + "時間" + info.time_limit.substr(-2) + "分";
@@ -41,7 +34,7 @@ const app = new Vue({
         updateTime: function() {
             if (info != null) {
                 // 現在の時刻
-                now = moment(serverStart + performance.now());
+                now = moment().add(diff, 'millisecond');
                 if (now.isBefore(moment(info.time_start))) {
                     this.what_time = "コンテストまで"
                     day = moment(info.time_start).diff(moment(now), 'day')
