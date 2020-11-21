@@ -1,5 +1,5 @@
 var urlParam = location.search.substring(1);
-url = '../api/contest.json?timestamp=' + new Date().getTime()
+url = 'https://jmjmri.github.io/AtCoderContestAPI/api/contest.json?timestamp=' + new Date().getTime()
 console.log(url)
 const app = new Vue({
     el: '#app',
